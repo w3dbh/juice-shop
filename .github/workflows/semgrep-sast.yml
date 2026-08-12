@@ -8,13 +8,12 @@ jobs:
   semgrep:
     name: Run Semgrep Scan
     runs-on: ubuntu-latest
-    
-    container:
-      image: returntocorp/semgrep
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Run Semgrep
-        run: semgrep scan --config auto
+        uses: semgrep/semgrep-action@v1
+        with:
+          config: p/default
